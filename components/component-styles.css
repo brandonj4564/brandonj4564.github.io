@@ -1,0 +1,70 @@
+/* Censored Headshot styles */
+
+.censor-wrap {
+    position: relative;
+    overflow: hidden;
+    background: #E4E4E4; /* fall back frame while image loads */
+    border-radius: 20px
+}
+.censor-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(100%);
+    transition: filter 220ms ease;
+}
+.hover-color:hover .censor-img {
+    filter: grayscale(0%);
+}
+
+.hover-color:hover .bar {
+  visibility: hidden;
+  transition: visibility 0s ease-out;
+}
+
+/* Black censor bar */
+.bar {
+    position: absolute;
+    left: 17%;
+    right: 10%;
+    background: #1C1C1C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+    gap: 4px;
+    border-radius: 5px;
+    rotate: -1.5deg;
+}
+
+/* Typewriter text — use monospace to avoid width jitter */
+.type {
+    color: #fff;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-size: 40px;
+}
+.cursor {
+    color: #fff;
+    font-family: inherit;
+    font-weight: 700;
+    animation: blink 1s steps(2, start) infinite;
+    font-size: 28px;
+    margin-top: -4px;
+}
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+/* Mobile tweaks */
+@media (max-width: 640px) {
+    .bar {
+    left: 4%;
+    right: 4%;
+    }
+}
