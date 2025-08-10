@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: any }) {
       <body style={{ backgroundColor: theme.colors?.backgroundColor ? theme.colors.backgroundColor[0] : '#F1F1F1' }}>
         <MantineProvider theme={theme}>
           <Header />
-          <Container size="lg" p="0rem 2rem">
+          <Container size="xl" p="0rem 2rem">
 
             {children}
             {/* <Footer /> */}

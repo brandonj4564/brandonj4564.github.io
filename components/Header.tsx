@@ -42,7 +42,7 @@ export default function Header() {
             style={{ zIndex: 99 }}
         >
             {/* Centered content inside */}
-            <Container size="lg" p="2rem">
+            <Container size="xl" p="2rem">
 
                 {/* Navigation Links */}
                 <Group justify="center" gap={64}>

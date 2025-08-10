@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import "./component-styles.css";
+import "./headshot-styles.css";
 import { motion } from 'framer-motion';
 
 type Props = {

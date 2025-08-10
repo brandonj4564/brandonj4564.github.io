@@ -19,8 +19,8 @@
 }
 
 .hover-color:hover .bar {
-  visibility: hidden;
-  transition: visibility 0s ease-out;
+    opacity: 0;
+    transform: translateY(-10px); 
 }
 
 /* Black censor bar */
@@ -36,6 +36,11 @@
     gap: 4px;
     border-radius: 5px;
     rotate: -1.5deg;
+
+    /* Add smooth transition */
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 /* Typewriter text — use monospace to avoid width jitter */

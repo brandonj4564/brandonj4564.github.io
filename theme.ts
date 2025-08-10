@@ -40,16 +40,16 @@ export const theme = createTheme({
       "#4D4D4D"
     ],
     lightColor: [
-      "#ebfffd", // light color
-      "#d7fdf9",
-      "#a9fdf3",
-      "#7bfded",
-      "#5dfde7",
-      "#50fde4",
-      "#48fde3",
-      "#3be1c9",
-      "#2bc8b2",
-      "#00ad99"
+      "#E4E4E4", // light color
+      "#E4E4E4",
+      "#E4E4E4",
+      "#E4E4E4",
+      "#E4E4E4",
+      "#E4E4E4",
+      "#E4E4E4",
+      "#E4E4E4",
+      "#E4E4E4",
+      "#E4E4E4"
     ],
     lightestColor: [
       "#F5F5F5", // lightest color
