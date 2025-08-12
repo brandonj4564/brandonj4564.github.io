@@ -1,33 +1,37 @@
 'use client'
 
-import { Box, Container, Group, Button, Grid, Center } from "@mantine/core";
+import { Box, Container, Group, Button } from "@mantine/core";
 import { theme } from "../theme";
 import { useHover } from '@mantine/hooks';
+import { motion } from 'framer-motion';
 
-const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+const NavLink = ({ href, children }: { href: string; children: React.ReactNode; }) => {
     const { hovered, ref } = useHover();
-    return (
-        <Button
-            ref={ref}
-            variant="transparent"
-            p="0"
-            fz={{ base: "md", md: "lg" }}
-            c={hovered ? 'black' : 'darkestColor'}
-            component="a"
-            href={href}
-            className="nav-link title"
-            styles={{ label: { display: 'block', padding: 0 } }} // Mantine: keep padding stable
-        >
-            <span className="nav-width-lock">
-                {/* ghost: reserves width of the boldest state */}
-                <span className="nav-ghost" aria-hidden="true">{children}</span>
 
-                {/* real: the visible text that changes weight */}
-                <span className="nav-real" style={{ fontWeight: hovered ? 400 : 300 }}>
-                    {children}
+    return (
+        <motion.div whileHover={{ scale: 1.05, y: 5 }} whileTap={{ scale: 0.98, y: 2 }}>
+            <Button
+                ref={ref}
+                variant="transparent"
+                p="0"
+                fz={{ base: "md", md: "lg" }}
+                c={hovered ? 'black' : 'darkestColor'}
+                component="a"
+                href={href}
+                className="nav-link title"
+                styles={{ label: { display: 'block', padding: 0 } }} // Mantine: keep padding stable
+            >
+                <span className="nav-width-lock">
+                    {/* ghost: reserves width of the boldest state */}
+                    {/* <span className="nav-ghost" aria-hidden="true">{children}</span> */}
+
+                    {/* real: the visible text that changes weight */}
+                    <span className="nav-real">
+                        {children}
+                    </span>
                 </span>
-            </span>
-        </Button>
+            </Button>
+        </motion.div>
     );
 };
 
