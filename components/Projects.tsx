@@ -88,8 +88,8 @@ export default function Projects() {
     ]
 
     return (
-        <div>
-            <Text mt="10rem">Projects</Text>
+        <div style={{ marginTop: "10rem" }}>
+            <Text fz={40} c="darkestColor" fw={300} my="xl" className="title">Projects</Text>
             {projects.map((project, index) => (
                 <ProjectCard key={index} project={project} />
             ))}

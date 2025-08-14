@@ -41,21 +41,23 @@ export default function Header() {
             pos="sticky"
             top="0"
             mb="1rem"
-            w="100vw" // Ensure full width
+            w="100%" // Ensure full width
             bg={theme.colors?.backgroundColor ? theme.colors.backgroundColor[0] : '#F1F1F1'}
             style={{ zIndex: 99 }}
         >
-            {/* Centered content inside */}
-            <Container size="xl" p="2rem">
+            <header>
+                {/* Centered content inside */}
+                <Container size="xl" p="3rem 2rem 2rem 2rem">
 
-                {/* Navigation Links */}
-                <Group justify="center" gap={64}>
-                    <NavLink href="/">Home</NavLink>
-                    <NavLink href="/about">About</NavLink>
-                    <NavLink href="/projects">Projects</NavLink>
-                    <NavLink href="/contact">Contact</NavLink>
-                </Group>
-            </Container>
+                    {/* Navigation Links */}
+                    <Group justify="center" gap={64}>
+                        <NavLink href="/">Home</NavLink>
+                        <NavLink href="/about">About</NavLink>
+                        <NavLink href="/projects">Projects</NavLink>
+                        <NavLink href="/contact">Contact</NavLink>
+                    </Group>
+                </Container>
+            </header>
         </Box>
     );
 }
