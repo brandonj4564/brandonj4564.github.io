@@ -42,7 +42,7 @@ export default function Header() {
             top="0"
             mb="1rem"
             w="100%" // Ensure full width
-            bg={theme.colors?.backgroundColor ? theme.colors.backgroundColor[0] : '#F1F1F1'}
+            bg="backgroundColor"
             style={{ zIndex: 99 }}
         >
             <header>
@@ -55,6 +55,7 @@ export default function Header() {
                         <NavLink href="/about">About</NavLink>
                         <NavLink href="/projects">Projects</NavLink>
                         <NavLink href="/contact">Contact</NavLink>
+                        <NavLink href="/resume">Resume</NavLink>
                     </Group>
                 </Container>
             </header>

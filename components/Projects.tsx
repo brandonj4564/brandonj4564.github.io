@@ -1,6 +1,6 @@
 'use client';
 
-import { BackgroundImage, Container, Group, Overlay, Paper, Text } from "@mantine/core";
+import { BackgroundImage, Container, Group, Overlay, Paper, Stack, Text } from "@mantine/core";
 import { useHover } from "@mantine/hooks";
 import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 import { useRouter } from "next/navigation";
@@ -22,7 +22,7 @@ const Tag = ({ tag }: { tag: string }) => {
     );
 }
 
-const ProjectCard = ({ project }: { project: Project }) => {
+const ProjectCard = ({ project, opacity = 0.8 }: { project: Project, opacity?: number }) => {
     const { hovered, ref } = useHover();
     const router = useRouter();
     const controls = useAnimationControls();
@@ -51,7 +51,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                             style={{
                                 position: 'absolute',
                                 inset: 0,
-                                background: 'rgba(0, 0, 0, 0.8)',
+                                background: `rgba(0, 0, 0, ${opacity})`,
                                 zIndex: 0
                             }}
                         />
@@ -81,18 +81,37 @@ export default function Projects() {
         {
             name: "Virtual Cowboy",
             description: "A proof-of-concept mobile app built with Expo to allow farmers to replace their physical fencing with virtual drawn boundaries, simplifying the task of herding cattle.",
-            image: "virtual-cowboy.png",
+            image: "project-images/virtual-cowboy.png",
             href: "/projects/virtual-cowboy",
-            tags: ["React Native", "TypeScript", "Expo"],
+            tags: ["React Native", "TypeScript", "Expo", "Figma"],
+            opacity: 0.8,
+        },
+        {
+            name: "Independent Content Registry",
+            description: "A tool which allows creators to license their content for AI to use in training models and get paid for it.",
+            image: "project-images/credtent.png",
+            href: "/projects/independent-content-registry",
+            tags: ["Tailwind CSS", "TypeScript", "Makerkit", "React Remix", "Supabase", "Figma"],
+            opacity: 0.85,
+        },
+        {
+            name: "TinyOS Network",
+            description: "A proof-of-concept mobile app built with Expo to allow farmers to replace their physical fencing with virtual drawn boundaries, simplifying the task of herding cattle.",
+            image: "project-images/tinyos-network.png",
+            href: "/projects/tinyos-network",
+            tags: ["nesC", "TinyOS", "Networks"],
+            opacity: 0.7,
         }
     ]
 
     return (
         <div style={{ marginTop: "10rem" }}>
             <Text fz={40} c="darkestColor" fw={300} my="xl" className="title">Projects</Text>
-            {projects.map((project, index) => (
-                <ProjectCard key={index} project={project} />
-            ))}
+            <Stack gap="lg">
+                {projects.map((project, index) => (
+                    <ProjectCard key={index} project={project} opacity={project.opacity} />
+                ))}
+            </Stack>
         </div>
     );
 }
