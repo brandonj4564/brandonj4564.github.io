@@ -49,9 +49,8 @@ export default function RootLayout({ children }: { children: any }) {
               style={{
                 position: 'relative',
                 zIndex: 10, // above footer
-              }}
-            >            <Container size="xl" p="0rem 2rem">
-
+              }}>
+              <Container size="xl" p="0rem 2rem">
                 {children}
               </Container>
             </Box>
