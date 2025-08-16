@@ -71,7 +71,7 @@ export default function Header() {
 
                         <Group justify="space-between" align="center">
                             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                                <Button component="a" href="/resume.pdf" bg="darkColor" c="lightestColor" fz="md" h="3rem" bdrs="10px" className="project-card-title">My Résumé</Button>
+                                <Button onClick={() => window.open("/resume.pdf")} bg="darkColor" c="lightestColor" fz="md" h="3rem" bdrs="10px" className="project-card-title">My Résumé</Button>
                             </motion.div>
 
                             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>

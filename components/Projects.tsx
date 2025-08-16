@@ -6,6 +6,7 @@ import { IconChevronRight } from "@tabler/icons-react";
 import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { useScreenSize } from "./ScreenSizeContext";
 
 interface Project {
     name: string;
@@ -15,10 +16,10 @@ interface Project {
     tags: string[];
 }
 
-const Tag = ({ tag }: { tag: string }) => {
+const Tag = ({ tag, isMobile }: { tag: string, isMobile: boolean }) => {
     return (
-        <Paper bdrs="10px" bg="lightColor" p="0.5rem 1rem" w="fit-content">
-            <Text fz="sm" c="darkColor" ff="Open Sans Condensed" fw="600">{tag.toUpperCase()}</Text>
+        <Paper bdrs={{ base: "5px", sm: "10px" }} bg="lightColor" p={isMobile ? "0.25rem 0.5rem" : "0.5rem 1rem"} w="fit-content">
+            <Text fz={isMobile ? "xs" : "sm"} c="darkColor" ff="Open Sans Condensed" fw="600">{tag.toUpperCase()}</Text>
         </Paper>
     );
 }
@@ -27,6 +28,8 @@ const ProjectCard = ({ project, opacity = 0.8 }: { project: Project, opacity?: n
     const { hovered, ref } = useHover();
     const router = useRouter();
     const controls = useAnimationControls();
+
+    const { isMobile, isTablet } = useScreenSize();
 
     useEffect(() => {
         controls.start(hovered ? "hidden" : "visible");
@@ -64,11 +67,11 @@ const ProjectCard = ({ project, opacity = 0.8 }: { project: Project, opacity?: n
                     hidden: { opacity: 0 },
                     visible: { opacity: 1 },
                 }} initial="visible" animate={controls} style={{ position: 'relative', zIndex: 1, color: 'white' }}>
-                    <Text fz={64} c="lightestColor" className="project-card-title">{project.name}</Text>
-                    <Text fz="sm" c="lightestColor">{project.description}</Text>
-                    <Group gap="lg" mt="xl">
+                    <Text fz={isMobile ? 32 : isTablet ? 48 : 64} c="lightestColor" className="project-card-title">{project.name}</Text>
+                    <Text fz={{ base: "xs", sm: "sm" }} mt={{ base: "xs", sm: "0" }} c="lightestColor">{project.description}</Text>
+                    <Group gap={isMobile ? "xs" : "lg"} mt={isMobile ? "lg" : "xl"}>
                         {project.tags.map((tag, index) => (
-                            <Tag key={index} tag={tag} />
+                            <Tag key={index} tag={tag} isMobile={isMobile} />
                         ))}
                     </Group>
                 </motion.div>
@@ -78,6 +81,8 @@ const ProjectCard = ({ project, opacity = 0.8 }: { project: Project, opacity?: n
 }
 
 export default function Projects() {
+    const { isMobile, isTablet } = useScreenSize();
+
     const projects = [
         {
             name: "Virtual Cowboy",
@@ -106,16 +111,16 @@ export default function Projects() {
     ]
 
     return (
-        <div style={{ marginTop: "10rem" }}>
+        <div style={{ marginTop: isMobile ? "2rem" : isTablet ? "5rem" : "10rem" }}>
             <Group justify="space-between">
-                <Text fz={40} c="darkestColor" fw={300} my="xl" className="title">Projects</Text>
+                <Text fz={isMobile ? 24 : 40} c="darkestColor" fw={300} my="xl" className="title">Projects</Text>
 
                 <motion.div whileHover={{ scale: 1.05, y: 5 }} whileTap={{ scale: 0.98, y: 2 }}>
                     <Button
                         variant="transparent"
                         c="darkestColor"
                         fw={300}
-                        fz={{ base: "md", md: "lg" }}
+                        fz={{ base: "sm", sm: "lg" }}
                         component="a"
                         href="/projects"
                         className="title"

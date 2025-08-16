@@ -6,8 +6,6 @@ export default function HomePage() {
   return <>
     <Introduction />
     <Projects />
-    <div style={{ paddingBottom: "10rem" }}>
-      <Socials />
-    </div>
+    <Socials />
   </>;
 }
