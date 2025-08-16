@@ -4,6 +4,7 @@ import { Box, Container, Group, Button } from "@mantine/core";
 import { theme } from "../theme";
 import { useHover } from '@mantine/hooks';
 import { motion } from 'framer-motion';
+import { useScreenSize } from "./ScreenSizeContext";
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode; }) => {
     const { hovered, ref } = useHover();
@@ -36,6 +37,8 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode; 
 };
 
 export default function Header() {
+    const { isMobile } = useScreenSize();
+
     return (
         <Box
             pos="sticky"
@@ -55,7 +58,7 @@ export default function Header() {
                         <NavLink href="/about">About</NavLink>
                         <NavLink href="/projects">Projects</NavLink>
                         <NavLink href="/contact">Contact</NavLink>
-                        <NavLink href="/resume">Resume</NavLink>
+                        <NavLink href="/resume.pdf">Résumé</NavLink>
                     </Group>
                 </Container>
             </header>

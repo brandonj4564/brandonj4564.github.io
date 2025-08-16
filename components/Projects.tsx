@@ -1,7 +1,8 @@
 'use client';
 
-import { BackgroundImage, Container, Group, Overlay, Paper, Stack, Text } from "@mantine/core";
+import { BackgroundImage, Button, Container, Group, Overlay, Paper, Stack, Text } from "@mantine/core";
 import { useHover } from "@mantine/hooks";
+import { IconChevronRight } from "@tabler/icons-react";
 import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -96,17 +97,34 @@ export default function Projects() {
         },
         {
             name: "TinyOS Network",
-            description: "A proof-of-concept mobile app built with Expo to allow farmers to replace their physical fencing with virtual drawn boundaries, simplifying the task of herding cattle.",
+            description: "Developed a simulated network using TinyOS and NesC, implementing core networking protocols including network flooding, node neighbor discovery, link state routing, and a rudimentary version of TCP.",
             image: "project-images/tinyos-network.png",
             href: "/projects/tinyos-network",
-            tags: ["nesC", "TinyOS", "Networks"],
+            tags: ["nesC", "TinyOS", "Networks", "TCP"],
             opacity: 0.7,
         }
     ]
 
     return (
         <div style={{ marginTop: "10rem" }}>
-            <Text fz={40} c="darkestColor" fw={300} my="xl" className="title">Projects</Text>
+            <Group justify="space-between">
+                <Text fz={40} c="darkestColor" fw={300} my="xl" className="title">Projects</Text>
+
+                <motion.div whileHover={{ scale: 1.05, y: 5 }} whileTap={{ scale: 0.98, y: 2 }}>
+                    <Button
+                        variant="transparent"
+                        c="darkestColor"
+                        fw={300}
+                        fz={{ base: "md", md: "lg" }}
+                        component="a"
+                        href="/projects"
+                        className="title"
+                        rightSection={<IconChevronRight size={20} />}
+                    >
+                        View All
+                    </Button>
+                </motion.div>
+            </Group>
             <Stack gap="lg">
                 {projects.map((project, index) => (
                     <ProjectCard key={index} project={project} opacity={project.opacity} />
