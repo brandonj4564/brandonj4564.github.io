@@ -7,6 +7,7 @@ import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useScreenSize } from "./ScreenSizeContext";
+import AnimateInView from "./AnimateInView";
 
 interface Project {
     name: string;
@@ -35,48 +36,51 @@ const ProjectCard = ({ project, opacity = 0.8 }: { project: Project, opacity?: n
         controls.start(hovered ? "hidden" : "visible");
     }, [hovered]);
 
+
     return (
-        <motion.div ref={ref} whileHover={{ scale: 1.02 }} transition={{ duration: 0.15 }} style={{ cursor: "pointer" }} onClick={() => router.push(project.href)}>
-            <BackgroundImage
-                src={project.image}
-                h="100%"
-                p="2rem 2rem"
-                style={{ borderRadius: "20px", position: 'relative', overflow: "hidden", filter: hovered ? "grayscale(0%)" : "grayscale(100%)" }}
-            >
-                {/* Dark overlay */}
-                <AnimatePresence
-                    mode="popLayout"
+        <AnimateInView>
+            <motion.div ref={ref} whileHover={{ scale: 1.02 }} transition={{ duration: 0.15 }} style={{ cursor: "pointer" }} onClick={() => router.push(project.href)}>
+                <BackgroundImage
+                    src={project.image}
+                    h="100%"
+                    p="2rem 2rem"
+                    style={{ borderRadius: "20px", position: 'relative', overflow: "hidden", filter: hovered ? "grayscale(0%)" : "grayscale(100%)" }}
                 >
-                    {!hovered && (
-                        <motion.div
-                            initial={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.15 }}
-                            style={{
-                                position: 'absolute',
-                                inset: 0,
-                                background: `rgba(0, 0, 0, ${opacity})`,
-                                zIndex: 0
-                            }}
-                        />
-                    )}
-                </AnimatePresence>
+                    {/* Dark overlay */}
+                    <AnimatePresence
+                        mode="popLayout"
+                    >
+                        {!hovered && (
+                            <motion.div
+                                initial={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.15 }}
+                                style={{
+                                    position: 'absolute',
+                                    inset: 0,
+                                    background: `rgba(0, 0, 0, ${opacity})`,
+                                    zIndex: 0
+                                }}
+                            />
+                        )}
+                    </AnimatePresence>
 
 
-                <motion.div layout variants={{
-                    hidden: { opacity: 0 },
-                    visible: { opacity: 1 },
-                }} initial="visible" animate={controls} style={{ position: 'relative', zIndex: 1, color: 'white' }}>
-                    <Text fz={isMobile ? 32 : isTablet ? 48 : 64} c="lightestColor" className="project-card-title">{project.name}</Text>
-                    <Text fz={{ base: "xs", sm: "sm" }} mt={{ base: "xs", sm: "0" }} c="lightestColor">{project.description}</Text>
-                    <Group gap={isMobile ? "xs" : "lg"} mt={isMobile ? "lg" : "xl"}>
-                        {project.tags.map((tag, index) => (
-                            <Tag key={index} tag={tag} isMobile={isMobile} />
-                        ))}
-                    </Group>
-                </motion.div>
-            </BackgroundImage>
-        </motion.div>
+                    <motion.div layout variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1 },
+                    }} initial="visible" animate={controls} style={{ position: 'relative', zIndex: 1, color: 'white' }}>
+                        <Text fz={isMobile ? 32 : isTablet ? 48 : 64} c="lightestColor" className="project-card-title">{project.name}</Text>
+                        <Text fz={{ base: "xs", sm: "sm" }} mt={{ base: "xs", sm: "0" }} c="lightestColor">{project.description}</Text>
+                        <Group gap={isMobile ? "xs" : "lg"} mt={isMobile ? "lg" : "xl"}>
+                            {project.tags.map((tag, index) => (
+                                <Tag key={index} tag={tag} isMobile={isMobile} />
+                            ))}
+                        </Group>
+                    </motion.div>
+                </BackgroundImage>
+            </motion.div>
+        </AnimateInView>
     );
 }
 
@@ -111,25 +115,28 @@ export default function Projects() {
     ]
 
     return (
-        <div style={{ marginTop: isMobile ? "2rem" : isTablet ? "5rem" : "10rem" }}>
-            <Group justify="space-between">
-                <Text fz={isMobile ? 24 : 40} c="darkestColor" fw={300} my="xl" className="title">Projects</Text>
+        <div style={{ marginTop: isMobile ? "2rem" : isTablet ? "5rem" : "10rem", paddingBottom: isMobile ? "5rem" : "10rem" }}>
+            <AnimateInView>
+                <Group justify="space-between">
+                    <Text fz={isMobile ? 24 : 40} c="darkestColor" fw={300} my="xl" className="title">Projects</Text>
 
-                <motion.div whileHover={{ scale: 1.05, y: 5 }} whileTap={{ scale: 0.98, y: 2 }}>
-                    <Button
-                        variant="transparent"
-                        c="darkestColor"
-                        fw={300}
-                        fz={{ base: "sm", sm: "lg" }}
-                        component="a"
-                        href="/projects"
-                        className="title"
-                        rightSection={<IconChevronRight size={20} />}
-                    >
-                        View All
-                    </Button>
-                </motion.div>
-            </Group>
+                    <motion.div whileHover={{ scale: 1.05, y: 5 }} whileTap={{ scale: 0.98, y: 2 }}>
+                        <Button
+                            variant="transparent"
+                            c="darkestColor"
+                            fw={300}
+                            fz={{ base: "sm", sm: "lg" }}
+                            component="a"
+                            href="/projects"
+                            className="title"
+                            rightSection={<IconChevronRight size={20} />}
+                        >
+                            View All
+                        </Button>
+                    </motion.div>
+                </Group>
+            </AnimateInView>
+
             <Stack gap="lg">
                 {projects.map((project, index) => (
                     <ProjectCard key={index} project={project} opacity={project.opacity} />

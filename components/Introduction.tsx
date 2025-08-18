@@ -4,6 +4,7 @@ import { Grid, GridCol, Group, Stack, Text } from "@mantine/core";
 import Headshot from "./Headshot";
 import { useMantineTheme } from '@mantine/core';
 import { useScreenSize } from "./ScreenSizeContext";
+import AnimateInView from "./AnimateInView";
 
 const DecorativeTopPart = () => {
     const theme = useMantineTheme();
@@ -54,27 +55,33 @@ export default function Introduction() {
         <div>
             <Grid gutter="xl">
                 <GridCol span={{ base: 12, sm: 7 }} style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "inherit" }}>
-                    {!isMobile && <DecorativeTopPart />}
+                    <AnimateInView>
 
-                    <div style={{ margin: "2rem auto" }}>
-                        <Text c="darkColor" fz={isMobile ? "md" : "lg"}>Hello, my name is</Text>
-                        <Text c="darkestColor" className="title" fz={isMobile ? 40 : isTablet ? 60 : 70} fw={300} mb={isMobile ? "md" : "xl"}>Brandon Jia</Text>
+                        {!isMobile && <DecorativeTopPart />}
 
-                        <Text c="darkColor" fz={isMobile ? "xs" : "sm"}>
-                            A software engineer with a frontend focus who learns by building.
-                            I design clean interfaces in Figma, ship apps with React and Next.js, and debug low-level systems when the project calls for it.
-                        </Text>
-                    </div>
+                        <div style={{ margin: "2rem auto" }}>
+                            <Text c="darkColor" fz={isMobile ? "md" : "lg"}>Hello, my name is</Text>
+                            <Text c="darkestColor" className="title" fz={isMobile ? 40 : isTablet ? 60 : 70} fw={300} mb={isMobile ? "md" : "xl"}>Brandon Jia</Text>
 
-                    {!isMobile && <DecorativeBottomPart />}
+                            <Text c="darkColor" fz={isMobile ? "xs" : "sm"}>
+                                A software engineer with a frontend focus who learns by building.
+                                I design clean interfaces in Figma, ship apps with React and Next.js, and debug low-level systems when the project calls for it.
+                            </Text>
+                        </div>
+
+                        {!isMobile && <DecorativeBottomPart />}
+                    </AnimateInView>
                 </GridCol>
 
                 <GridCol span={{ base: 12, sm: 5 }} style={{ display: "flex", justifyContent: isMobile ? "flex-start" : "flex-end" }}>
-                    <Headshot
-                        width={isMobile ? "100%" : isTablet ? 300 : 400}
-                        src="/headshot.png"
-                        alt="Brandon Jia"
-                    />
+                    <AnimateInView>
+
+                        <Headshot
+                            width={isMobile ? "100%" : isTablet ? 300 : 400}
+                            src="/headshot.png"
+                            alt="Brandon Jia"
+                        />
+                    </AnimateInView>
                 </GridCol>
             </Grid>
         </div>

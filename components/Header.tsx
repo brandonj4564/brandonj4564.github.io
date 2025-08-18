@@ -63,7 +63,7 @@ export default function Header() {
                         >
                             <Stack gap="md" mt="sm">
                                 <NavLink href="/">Home</NavLink>
-                                <NavLink href="/about">About</NavLink>
+                                {/* <NavLink href="/about">About</NavLink> */}
                                 <NavLink href="/projects">Projects</NavLink>
                                 <NavLink href="/contact">Contact</NavLink>
                             </Stack>
@@ -89,7 +89,7 @@ export default function Header() {
                         {/* Navigation Links */}
                         <Group justify="center" gap={64}>
                             <NavLink href="/">Home</NavLink>
-                            <NavLink href="/about">About</NavLink>
+                            {/* <NavLink href="/about">About</NavLink> */}
                             <NavLink href="/projects">Projects</NavLink>
                             <NavLink href="/contact">Contact</NavLink>
                             <NavLink href="/resume.pdf">Résumé</NavLink>

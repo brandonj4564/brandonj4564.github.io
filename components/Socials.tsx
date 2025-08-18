@@ -11,7 +11,7 @@ export default function Socials() {
     const iconSize = isMobile ? 35 : isTablet ? 50 : 60;
 
     return (
-        <div style={{ marginTop: isMobile ? "3rem" : "5rem", paddingBottom: isMobile ? "5rem" : "10rem" }}>
+        <div >
             <Text fz={isMobile ? 24 : 40} c="darkestColor" fw={300} mt="xl" mb="md" className="title">Socials</Text>
             <Text fz={{ base: "xs", sm: "sm" }} c="darkColor" mb="xl">One day I will surely use enough social media to fill out this section.</Text>
 

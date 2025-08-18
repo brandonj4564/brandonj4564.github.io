@@ -5,12 +5,14 @@ import { motion } from "framer-motion";
 import { useScreenSize } from "./ScreenSizeContext";
 import { useDisclosure } from "@mantine/hooks";
 import { useForm } from "@mantine/form";
+import { IconBrandGithubFilled, IconBrandLinkedinFilled } from "@tabler/icons-react";
+import SendMeEmailForm from "./SendMeEmailForm";
 
 export const FOOTER_HEIGHT = 340; // px – change to taste
 
 export function Footer() {
     const { isMobile } = useScreenSize();
-    const [opened, { open, close }] = useDisclosure(true);
+    const [opened, { open, close }] = useDisclosure(false);
 
     const form = useForm({
         mode: 'uncontrolled',
@@ -43,7 +45,8 @@ export function Footer() {
             >
                 <Modal opened={opened} onClose={close} size="lg"
                     title={<Text className="project-card-title" fz="lg" c="darkestColor">Reach me by email</Text>}>
-
+                    <SendMeEmailForm onSubmit={close} />
+                    {/* 
                     <form action={`https://formsubmit.co/brandonj4564@gmail.com`} method="POST"
                         onSubmit={(e) => {
                             if (!form.isValid()) {
@@ -90,7 +93,7 @@ export function Footer() {
                                 <Button type="submit" bg="darkColor" c="lightestColor" fz="sm" className="project-card-title">Submit</Button>
                             </motion.div>
                         </Group>
-                    </form>
+                    </form> */}
 
                 </Modal>
 
@@ -106,8 +109,17 @@ export function Footer() {
 
                     <Divider mt="4rem" c="backgroundColor" opacity={0.3} />
 
-                    <Group gap="xs" mt="md">
+                    <Group gap="xs" mt="sm" justify="space-between" align="center">
                         <Text fz={isMobile ? "xs" : "sm"} c="lightestColor">© {new Date().getFullYear()} Brandon Jia. All rights reserved.</Text>
+
+                        <Group gap="sm">
+                            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} style={{ cursor: "pointer" }} onClick={() => window.open("https://github.com/brandonj4564")}>
+                                <IconBrandGithubFilled size={24} color="#E4E4E4" />
+                            </motion.div>
+                            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} style={{ cursor: "pointer" }} onClick={() => window.open("https://www.linkedin.com/in/brandon-jia-39240423b/")}>
+                                <IconBrandLinkedinFilled size={24} color="#E4E4E4" />
+                            </motion.div>
+                        </Group>
                     </Group>
                 </Container>
             </footer>

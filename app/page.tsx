@@ -6,6 +6,6 @@ export default function HomePage() {
   return <>
     <Introduction />
     <Projects />
-    <Socials />
+    {/* <Socials /> */}
   </>;
 }
