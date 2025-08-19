@@ -6,44 +6,34 @@ import { useMantineTheme } from '@mantine/core';
 import { useScreenSize } from "./ScreenSizeContext";
 import AnimateInView from "./AnimateInView";
 
-const DecorativeTopPart = () => {
+const DecorativeTopPart = ({ isTablet }: { isTablet: boolean }) => {
     const theme = useMantineTheme();
+
+    const width = isTablet ? 40 : 60;
     return (
-        <Stack gap="xs" w="fit-content">
-            <Group align="flex-start" gap="xs">
-                <div style={{ width: "4rem", height: "4rem", backgroundColor: theme.colors.lightColor[0], borderRadius: "10px" }} />
-                <div style={{ width: "2rem", height: "2rem", backgroundColor: theme.colors.lightColor[0], borderRadius: "10px" }} />
+        <Stack gap={isTablet ? "7px" : "xs"} w="fit-content">
+            <Group align="flex-start" gap={isTablet ? "7px" : "xs"}>
+                <div style={{ width: width, height: width, backgroundColor: theme.colors.lightColor[0], borderRadius: isTablet ? "5px" : "10px" }} />
+                <div style={{ width: width / 2, height: width / 2, backgroundColor: theme.colors.lightColor[0], borderRadius: isTablet ? "5px" : "10px" }} />
             </Group>
 
-            <div style={{ width: "2rem", height: "2rem", backgroundColor: theme.colors.lightColor[0], borderRadius: "10px" }} />
+            <div style={{ width: width / 2, height: width / 2, backgroundColor: theme.colors.lightColor[0], borderRadius: isTablet ? "5px" : "10px" }} />
         </Stack>
     );
 }
 
-const DecorativeBottomPart = () => {
+const DecorativeBottomPart = ({ isTablet }: { isTablet: boolean }) => {
     const theme = useMantineTheme();
+
+    const width = isTablet ? 40 : 60;
     return (
-        <Stack gap="xs" w="fit-content">
-            <div style={{ width: "2rem", height: "2rem", backgroundColor: theme.colors.lightColor[0], borderRadius: "10px" }} />
+        <Stack gap={isTablet ? "7px" : "xs"} w="fit-content">
+            <div style={{ width: width / 2, height: width / 2, backgroundColor: theme.colors.lightColor[0], borderRadius: isTablet ? "5px" : "10px" }} />
 
-            <Group align="flex-end" gap="xs">
-                <div style={{ width: "4rem", height: "4rem", backgroundColor: theme.colors.lightColor[0], borderRadius: "10px" }} />
-                <div style={{ width: "2rem", height: "2rem", backgroundColor: theme.colors.lightColor[0], borderRadius: "10px" }} />
+            <Group align="flex-end" gap={isTablet ? "7px" : "xs"}>
+                <div style={{ width: width, height: width, backgroundColor: theme.colors.lightColor[0], borderRadius: isTablet ? "5px" : "10px" }} />
+                <div style={{ width: width / 2, height: width / 2, backgroundColor: theme.colors.lightColor[0], borderRadius: isTablet ? "5px" : "10px" }} />
             </Group>
-        </Stack>
-    );
-}
-
-const DecorativeRightPart = () => {
-    const theme = useMantineTheme();
-    return (
-        <Stack gap="xs" align="flex-end" w="fit-content">
-            <Group align="flex-start" gap="xs">
-                <div style={{ width: "2rem", height: "2rem", backgroundColor: theme.colors.lightColor[0], borderRadius: "10px" }} />
-                <div style={{ width: "4rem", height: "4rem", backgroundColor: theme.colors.lightColor[0], borderRadius: "10px" }} />
-            </Group>
-
-            <div style={{ width: "2rem", height: "2rem", backgroundColor: theme.colors.lightColor[0], borderRadius: "10px" }} />
         </Stack>
     );
 }
@@ -56,9 +46,10 @@ export default function Introduction() {
             <Grid gutter="xl">
                 <GridCol span={{ base: 12, sm: 7 }} style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "inherit" }}>
                     <AnimateInView>
+                        {!isMobile && <DecorativeTopPart isTablet={isTablet} />}
+                    </AnimateInView>
 
-                        {!isMobile && <DecorativeTopPart />}
-
+                    <AnimateInView>
                         <div style={{ margin: "2rem auto" }}>
                             <Text c="darkColor" fz={isMobile ? "md" : "lg"}>Hello, my name is</Text>
                             <Text c="darkestColor" className="title" fz={isMobile ? 40 : isTablet ? 60 : 70} fw={300} mb={isMobile ? "md" : "xl"}>Brandon Jia</Text>
@@ -69,7 +60,10 @@ export default function Introduction() {
                             </Text>
                         </div>
 
-                        {!isMobile && <DecorativeBottomPart />}
+                    </AnimateInView>
+
+                    <AnimateInView>
+                        {!isMobile && <DecorativeBottomPart isTablet={isTablet} />}
                     </AnimateInView>
                 </GridCol>
 
