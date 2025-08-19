@@ -74,16 +74,16 @@ export default function ContactPage() {
                 style={{ width: "100dvw", position: "absolute", left: 0, padding: isMobile ? "7rem 0" : "5rem 0" }}
             >
                 <motion.div layout style={styleIfMotion as any}>
-                    <Container size="xl" p="0 2rem" style={{ justifyContent: "center", display: "flex", alignItems: "center" }}>
-                        <AnimateInView>
+                    <AnimateInView>
+                        <Container size="xl" p="0 2rem" style={{ justifyContent: "center", display: "flex", alignItems: "center" }}>
                             <Card w={isMobile ? "100%" : 450} bg="backgroundColor" bdrs="10px" p="lg">
                                 <Text fz={isMobile ? "xl" : "2.5rem"} mb="md" c="darkestColor" className="project-card-title">
                                     Reach me by email
                                 </Text>
                                 <SendMeEmailForm onSubmit={() => { }} />
                             </Card>
-                        </AnimateInView>
-                    </Container>
+                        </Container>
+                    </AnimateInView>
                 </motion.div>
             </div>
 
