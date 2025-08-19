@@ -13,7 +13,7 @@ export default function Socials() {
     return (
         <div >
             <Text fz={isMobile ? 24 : 40} c="darkestColor" fw={300} mt="xl" mb="md" className="title">Socials</Text>
-            <Text fz={{ base: "xs", sm: "sm" }} c="darkColor" mb="xl">One day I will surely use enough social media to fill out this section.</Text>
+            <Text fz={{ base: "xs", sm: "sm" }} c="darkColor" mb="xl">I’m always happy to talk about software engineering, projects, or potential opportunities. Use the form below or connect with me through one of the links.</Text>
 
             <Center w="100%">
                 <Group gap={isMobile ? "xl" : "3rem"}>
