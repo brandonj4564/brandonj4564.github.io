@@ -1,0 +1,86 @@
+import { Paper, BackgroundImage, Group, Text } from "@mantine/core";
+import { useHover } from "@mantine/hooks";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import AnimateInView from "./AnimateInView";
+import { useScreenSize } from "./ScreenSizeContext";
+import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
+
+export interface Project {
+    name: string;
+    description: string;
+    image: string;
+    href: string;
+    tags: string[];
+    opacity?: number;
+}
+
+const Tag = ({ tag, isMobile }: { tag: string, isMobile: boolean }) => {
+    return (
+        <Paper bdrs={{ base: "5px", sm: "10px" }} bg="lightColor" p={isMobile ? "0.25rem 0.5rem" : "0.5rem 1rem"} w="fit-content">
+            <Text fz={isMobile ? "xs" : "sm"} c="darkColor" ff="Open Sans Condensed" fw="600">{tag.toUpperCase()}</Text>
+        </Paper>
+    );
+}
+
+const ProjectCard = ({ project }: { project: Project }) => {
+    const { hovered, ref } = useHover();
+    const router = useRouter();
+    const controls = useAnimationControls();
+    const opacity = project.opacity || 0.8;
+
+    const { isMobile, isTablet } = useScreenSize();
+
+    useEffect(() => {
+        controls.start(hovered ? "hidden" : "visible");
+    }, [hovered]);
+
+
+    return (
+        <AnimateInView>
+            <motion.div ref={ref} whileHover={{ scale: 1.02 }} transition={{ duration: 0.15 }} style={{ cursor: "pointer" }} onClick={() => router.push(project.href)}>
+                <BackgroundImage
+                    src={project.image}
+                    h="100%"
+                    p="2rem 2rem"
+                    style={{ borderRadius: "20px", position: 'relative', overflow: "hidden", filter: hovered ? "grayscale(0%)" : "grayscale(100%)" }}
+                >
+                    {/* Dark overlay */}
+                    <AnimatePresence
+                        mode="popLayout"
+                    >
+                        {!hovered && (
+                            <motion.div
+                                initial={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.15 }}
+                                style={{
+                                    position: 'absolute',
+                                    inset: 0,
+                                    background: `rgba(0, 0, 0, ${opacity})`,
+                                    zIndex: 0
+                                }}
+                            />
+                        )}
+                    </AnimatePresence>
+
+
+                    <motion.div layout variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1 },
+                    }} initial="visible" animate={controls} style={{ position: 'relative', zIndex: 1, color: 'white' }}>
+                        <Text fz={isMobile ? 32 : isTablet ? 48 : 64} c="lightestColor" className="project-card-title">{project.name}</Text>
+                        <Text fz={{ base: "xs", sm: "sm" }} mt={{ base: "xs", sm: "0" }} c="lightestColor">{project.description}</Text>
+                        <Group gap={isMobile ? "xs" : "lg"} mt={isMobile ? "lg" : "xl"}>
+                            {project.tags.map((tag, index) => (
+                                <Tag key={index} tag={tag} isMobile={isMobile} />
+                            ))}
+                        </Group>
+                    </motion.div>
+                </BackgroundImage>
+            </motion.div>
+        </AnimateInView>
+    );
+}
+
+export default ProjectCard;
