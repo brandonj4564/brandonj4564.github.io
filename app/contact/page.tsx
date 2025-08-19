@@ -14,6 +14,7 @@ import {
 } from "framer-motion";
 import { useScreenSize } from "../../components/ScreenSizeContext";
 import React from "react";
+import AnimateInView from "../../components/AnimateInView";
 
 export default function ContactPage() {
     const { isMobile } = useScreenSize();
@@ -74,12 +75,14 @@ export default function ContactPage() {
             >
                 <motion.div layout style={styleIfMotion as any}>
                     <Container size="xl" p="0 2rem" style={{ justifyContent: "center", display: "flex", alignItems: "center" }}>
-                        <Card w={isMobile ? "100%" : 450} bg="backgroundColor" bdrs="10px" p="lg">
-                            <Text fz={isMobile ? "xl" : "2.5rem"} mb="md" c="darkestColor" className="project-card-title">
-                                Reach me by email
-                            </Text>
-                            <SendMeEmailForm onSubmit={() => { }} />
-                        </Card>
+                        <AnimateInView>
+                            <Card w={isMobile ? "100%" : 450} bg="backgroundColor" bdrs="10px" p="lg">
+                                <Text fz={isMobile ? "xl" : "2.5rem"} mb="md" c="darkestColor" className="project-card-title">
+                                    Reach me by email
+                                </Text>
+                                <SendMeEmailForm onSubmit={() => { }} />
+                            </Card>
+                        </AnimateInView>
                     </Container>
                 </motion.div>
             </div>
