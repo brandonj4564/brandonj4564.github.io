@@ -13,6 +13,7 @@ export interface Project {
     href: string;
     tags: string[];
     opacity?: number;
+    caseStudy?: boolean;
 }
 
 const Tag = ({ tag, isMobile }: { tag: string, isMobile: boolean }) => {
@@ -28,6 +29,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
     const router = useRouter();
     const controls = useAnimationControls();
     const opacity = project.opacity || 0.8;
+    const urlIsExternal = project.href.startsWith("http");
 
     const { isMobile, isTablet } = useScreenSize();
 
@@ -38,12 +40,12 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
     return (
         <AnimateInView>
-            <motion.div ref={ref} whileHover={{ scale: 1.02 }} transition={{ duration: 0.15 }} style={{ cursor: "pointer" }} onClick={() => router.push(project.href)}>
+            <motion.div ref={ref} whileHover={{ scale: 1.02 }} transition={{ duration: 0.15 }} style={{ cursor: "pointer" }} onClick={(e) => urlIsExternal ? window.open(project.href) : router.push(project.href)}>
                 <BackgroundImage
                     src={project.image}
                     h="100%"
                     p="2rem 2rem"
-                    style={{ borderRadius: "20px", position: 'relative', overflow: "hidden", filter: hovered ? "grayscale(0%)" : "grayscale(100%)" }}
+                    style={{ borderRadius: isMobile ? "10px" : "20px", position: 'relative', overflow: "hidden", filter: hovered ? "grayscale(0%)" : "grayscale(100%)" }}
                 >
                     {/* Dark overlay */}
                     <AnimatePresence
