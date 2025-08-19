@@ -12,6 +12,7 @@ export interface Project {
     image: string;
     href: string;
     tags: string[];
+    dates: string;
     opacity?: number;
     caseStudy?: boolean;
 }
@@ -40,7 +41,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
     return (
         <AnimateInView>
-            <motion.div ref={ref} whileHover={{ scale: 1.02 }} transition={{ duration: 0.15 }} style={{ cursor: "pointer" }} onClick={(e) => urlIsExternal ? window.open(project.href) : router.push(project.href)}>
+            <motion.div ref={ref} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.99 }} transition={{ duration: 0.15 }} style={{ cursor: "pointer" }} onClick={(e) => urlIsExternal ? window.open(project.href) : router.push(project.href)}>
                 <BackgroundImage
                     src={project.image}
                     h="100%"
@@ -77,6 +78,10 @@ const ProjectCard = ({ project }: { project: Project }) => {
                             {project.tags.map((tag, index) => (
                                 <Tag key={index} tag={tag} isMobile={isMobile} />
                             ))}
+
+                            <Paper bdrs={{ base: "5px", sm: "10px" }} bg="transparent" bd="2px solid lightColor" p={isMobile ? "0.25rem 0.5rem" : "0.5rem 1rem"} w="fit-content">
+                                <Text fz={isMobile ? "xs" : "sm"} c="lightColor" ff="Open Sans Condensed" fw="600">{project.dates}</Text>
+                            </Paper>
                         </Group>
                     </motion.div>
                 </BackgroundImage>
