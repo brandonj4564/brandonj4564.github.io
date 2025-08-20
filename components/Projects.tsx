@@ -6,8 +6,7 @@ import { motion } from "framer-motion";
 import { useScreenSize } from "./ScreenSizeContext";
 import AnimateInView from "./AnimateInView";
 import ProjectCard from "./ProjectCard";
-import { Project } from "./ProjectCard";
-import { ProjectList } from "../app/projects/page";
+import { Project, ProjectList } from "../app/projects/_projects";
 
 export default function Projects() {
     const { isMobile, isTablet } = useScreenSize();

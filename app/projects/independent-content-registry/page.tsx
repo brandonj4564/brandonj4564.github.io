@@ -1,12 +1,12 @@
 'use client';
 
 import ProjectSectionHeader from "../../../components/ProjectSectionHeader";
-import { ProjectList } from "../page";
 import ProjectPageIntro from "../../../components/ProjectPageIntro";
 import { useScreenSize } from "../../../components/ScreenSizeContext";
 import AnimateInView from "../../../components/AnimateInView";
 import { Text } from "@mantine/core";
 import ZoomImage from "../../../components/ZoomImage";
+import { ProjectList } from "../_projects";
 
 export default function IndependentContentRegistryPage() {
     const { isMobile } = useScreenSize();
@@ -46,7 +46,7 @@ export default function IndependentContentRegistryPage() {
                     <ProjectSectionHeader title="My Role" />
 
                     <Text fz={isMobile ? "xs" : "sm"} c="darkColor" mb="xl" pb={isMobile ? "5rem" : "10rem"}>
-                        This project is still ongoing and I am currently working on it. I've designed mockups in Figma and implemented some of it in code using Makerkit. Feel free to check out the marketing website <a href="https://www.credtent.org/" target="_blank" rel="noopener noreferrer">here</a>.
+                        This project is still ongoing and I am currently working on it. I&apos;ve designed mockups in Figma and implemented some of it in code using Makerkit. Feel free to check out the marketing website <a href="https://www.credtent.org/" target="_blank" rel="noopener noreferrer">here</a>.
                     </Text>
                 </AnimateInView>
             </div>

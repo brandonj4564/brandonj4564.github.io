@@ -115,7 +115,7 @@ export default function ZoomImage({
         const prev = document.body.style.overflow;
         document.body.style.overflow = "hidden";
         return () => { document.body.style.overflow = prev; };
-    }, [open]);
+    }, [open, resetView]);
 
     /* =========================
        Pointer-based pinch + pan (drag is default)
@@ -276,7 +276,7 @@ export default function ZoomImage({
                     document.body
                 )
                 : null,
-        [open, image, isDragging, onWheelZoom, onPointerDown, onPointerMove, onPointerUp, resetView, scale, x, y]
+        [open, image, isDragging, onWheelZoom, onPointerDown, onPointerMove, onPointerUp, resetView, scale, x, y, onWheelZoom]
     );
 
     return (

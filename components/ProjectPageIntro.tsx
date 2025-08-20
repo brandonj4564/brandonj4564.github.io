@@ -2,9 +2,10 @@
 
 import { Text, Group, GridCol, Grid } from "@mantine/core";
 import { useScreenSize } from "./ScreenSizeContext";
-import { Project, Tag, DateTag } from "./ProjectCard";
+import { Tag, DateTag } from "./ProjectCard";
 import { LayoutGroup } from "framer-motion";
 import ZoomImage from "./ZoomImage";
+import { Project } from "../app/projects/_projects";
 
 export default function ProjectPageIntro({
     project,

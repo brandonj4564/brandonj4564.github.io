@@ -3,12 +3,12 @@
 import { Group, List, Text, ThemeIcon } from "@mantine/core";
 import { useScreenSize } from "../../../components/ScreenSizeContext";
 import ProjectPageIntro from "../../../components/ProjectPageIntro";
-import { ProjectList } from "../page";
 import AnimateInView from "../../../components/AnimateInView";
 import ZoomImage from "../../../components/ZoomImage";
 import { IconPencil, IconBulb, IconCode } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import ProjectSectionHeader from "../../../components/ProjectSectionHeader";
+import { ProjectList } from "../_projects";
 
 export default function VirtualCowboyPage() {
     const { isMobile } = useScreenSize();

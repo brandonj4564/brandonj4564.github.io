@@ -5,17 +5,7 @@ import { useEffect } from "react";
 import AnimateInView from "./AnimateInView";
 import { useScreenSize } from "./ScreenSizeContext";
 import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
-
-export interface Project {
-    name: string;
-    description: string;
-    image: string;
-    href: string;
-    tags: string[];
-    dates: string;
-    opacity?: number;
-    caseStudy?: boolean;
-}
+import { Project } from "../app/projects/_projects";
 
 export const Tag = ({ tag, isMobile }: { tag: string, isMobile: boolean }) => {
     return (
@@ -44,7 +34,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
     useEffect(() => {
         controls.start(hovered ? "hidden" : "visible");
-    }, [hovered]);
+    }, [hovered, controls]);
 
 
     return (

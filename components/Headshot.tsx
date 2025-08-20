@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import "./headshot-styles.css";
 import { motion } from 'framer-motion';
+import { Image } from '@mantine/core';
 
 type Props = {
     src: string;
@@ -72,7 +73,8 @@ export default function CensoredHeadshot({
             transition={{ duration: 0.15 }}
             aria-label={`${alt}. Roles: ${words.join(", ")}.`}
         >
-            <img
+            <Image
+                width={width}
                 src={src}
                 alt={alt}
                 className="censor-img"
