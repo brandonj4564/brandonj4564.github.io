@@ -17,10 +17,18 @@ export interface Project {
     caseStudy?: boolean;
 }
 
-const Tag = ({ tag, isMobile }: { tag: string, isMobile: boolean }) => {
+export const Tag = ({ tag, isMobile }: { tag: string, isMobile: boolean }) => {
     return (
         <Paper bdrs={{ base: "5px", sm: "10px" }} bg="lightColor" p={isMobile ? "0.25rem 0.5rem" : "0.5rem 1rem"} w="fit-content">
             <Text fz={isMobile ? "xs" : "sm"} c="darkColor" ff="Open Sans Condensed" fw="600">{tag.toUpperCase()}</Text>
+        </Paper>
+    );
+}
+
+export const DateTag = ({ date, isMobile, color = "lightColor" }: { date: string, isMobile: boolean, color?: string }) => {
+    return (
+        <Paper bdrs={{ base: "5px", sm: "10px" }} bg="transparent" bd={`2px solid ${color}`} p={isMobile ? "0.25rem 0.5rem" : "0.5rem 1rem"} w="fit-content">
+            <Text fz={isMobile ? "xs" : "sm"} c={color} ff="Open Sans Condensed" fw="600">{date}</Text>
         </Paper>
     );
 }
@@ -79,9 +87,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                                 <Tag key={index} tag={tag} isMobile={isMobile} />
                             ))}
 
-                            <Paper bdrs={{ base: "5px", sm: "10px" }} bg="transparent" bd="2px solid lightColor" p={isMobile ? "0.25rem 0.5rem" : "0.5rem 1rem"} w="fit-content">
-                                <Text fz={isMobile ? "xs" : "sm"} c="lightColor" ff="Open Sans Condensed" fw="600">{project.dates}</Text>
-                            </Paper>
+                            <DateTag date={project.dates} isMobile={isMobile} />
                         </Group>
                     </motion.div>
                 </BackgroundImage>
