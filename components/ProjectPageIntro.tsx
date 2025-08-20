@@ -9,7 +9,8 @@ import ZoomImage from "./ZoomImage";
 export default function ProjectPageIntro({
     project,
     image,
-}: { project: Project; image: string }) {
+    subtitle,
+}: { project: Project; image: string, subtitle?: string }) {
     const { isMobile } = useScreenSize();
 
     return (
@@ -36,7 +37,7 @@ export default function ProjectPageIntro({
                         span={{ base: 12, sm: 4 }}
                         style={{ display: "flex", justifyContent: isMobile ? "flex-start" : "flex-end" }}
                     >
-                        <ZoomImage image={image} />
+                        <ZoomImage image={image} subtitle={subtitle} />
                     </GridCol>
                 </Grid>
             </LayoutGroup>

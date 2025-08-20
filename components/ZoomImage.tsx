@@ -9,14 +9,15 @@ import {
 } from "framer-motion";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { Text } from "@mantine/core";
 
 const ZOOM_MIN = 1;
 const ZOOM_MAX = 5;
 const ZOOM_STEP = 1.12;
 
 export default function ZoomImage({
-    image,
-}: { image: string }) {
+    image, subtitle
+}: { image: string, subtitle?: string }) {
     const { isMobile } = useScreenSize();
     const { hovered, ref } = useHover();
     const [open, setOpen] = useState(false);
@@ -271,6 +272,16 @@ export default function ZoomImage({
                             pointerEvents: open ? "none" : "auto",
                         }}
                     />
+                    {subtitle && !open &&
+                        <AnimatePresence>
+                            <motion.div layout initial={{ opacity: 1 }} exit={{ opacity: 0 }} style={{ alignItems: "center", justifyContent: "center", display: "flex", marginTop: isMobile ? "0.5rem" : "1rem" }}>
+                                <Text fz={isMobile ? "xs" : "sm"} c="darkColor" mb="md">
+                                    {subtitle}
+                                </Text>
+                            </motion.div>
+                        </AnimatePresence>
+                    }
+
                 </motion.div>
 
                 {overlay}
