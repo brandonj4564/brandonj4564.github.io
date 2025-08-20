@@ -58,6 +58,37 @@ export default function ZoomImage({
         scale.set(s1);
     }, [scale, x, y]);
 
+    // after onWheelZoom is defined
+    useEffect(() => {
+        if (!open) return;
+        const el = imgRef.current;
+        if (!el) return;
+
+        const handler = (e: WheelEvent) => {
+            // proxy to your existing logic
+            // convert WheelEvent -> React-ish event fields we use
+            // (we only need clientX/clientY/deltaY)
+            e.preventDefault(); // allowed now
+            const rect = el.getBoundingClientRect();
+            const s0 = scale.get();
+            const dir = e.deltaY < 0 ? 1 : -1;
+            const s1 = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, s0 * (dir > 0 ? ZOOM_STEP : 1 / ZOOM_STEP)));
+            if (s1 === s0) return;
+
+            const mx = e.clientX - (rect.left + rect.width / 2);
+            const my = e.clientY - (rect.top + rect.height / 2);
+            const factor = s1 / s0 - 1;
+
+            x.set(x.get() - mx * factor);
+            y.set(y.get() - my * factor);
+            scale.set(s1);
+        };
+
+        el.addEventListener('wheel', handler, { passive: false });
+        return () => el.removeEventListener('wheel', handler as EventListener);
+    }, [open, scale, x, y]);
+
+
     const resetView = useCallback(() => {
         scale.set(1);
         x.set(0);
@@ -193,6 +224,7 @@ export default function ZoomImage({
                                 display: "grid",
                                 placeItems: "center",
                                 zIndex: 4010,
+                                overscrollBehavior: "contain"
                             }}
                         >
                             {/* Image: stop propagation so clicks don't close */}
@@ -203,7 +235,6 @@ export default function ZoomImage({
                                 draggable={false}                     // NEW: disable native image drag
                                 onDragStart={(e) => e.preventDefault()} // NEW: belt & suspenders
                                 onClick={(e) => e.stopPropagation()}
-                                onWheel={onWheelZoom}
                                 onPointerDown={onPointerDown}
                                 onPointerMove={onPointerMove}
                                 onPointerUp={onPointerUp}
