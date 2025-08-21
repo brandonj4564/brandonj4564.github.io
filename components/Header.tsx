@@ -51,7 +51,7 @@ export default function Header() {
             <header>
                 {/* Centered content inside */}
                 {isMobile ?
-                    <Container size="xl" p="2rem 2rem 1rem 2rem">
+                    <Container size="xl" p="1rem 2rem">
                         <Drawer
                             opened={opened} onClose={close} position="right"
                             title={<Text className="project-card-title" fz="lg" c="darkestColor">
