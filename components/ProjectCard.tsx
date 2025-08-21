@@ -33,6 +33,8 @@ const ProjectCard = ({ project }: { project: Project }) => {
     const { isMobile, isTablet } = useScreenSize();
 
     useEffect(() => {
+        if (isMobile) return;
+
         controls.start(hovered ? "hidden" : "visible");
     }, [hovered, controls]);
 
@@ -50,7 +52,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                     <AnimatePresence
                         mode="popLayout"
                     >
-                        {!hovered && (
+                        {(!hovered || isMobile) && (
                             <motion.div
                                 initial={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
