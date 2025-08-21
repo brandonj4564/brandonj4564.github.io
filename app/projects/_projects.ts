@@ -34,7 +34,7 @@ export const ProjectList: Project[] = [
     {
         name: "TinyOS Network",
         description: "Developed a simulated network using TinyOS and NesC, implementing core networking protocols including network flooding, node neighbor discovery, link state routing, and a rudimentary version of TCP.",
-        image: "project-images/tinyos-network.png",
+        image: "project-images/tinyos-network.PNG",
         href: "https://github.com/brandonj4564/tinyos-network",
         tags: ["nesC", "TinyOS", "Networks", "TCP"],
         dates: "September - December 2024",
@@ -44,7 +44,7 @@ export const ProjectList: Project[] = [
     {
         name: "Rate my Peers",
         description: "A parody web application inspired by Rate My Professor, designed for students to rate each other’s qualities in a rather unflattering way.",
-        image: "project-images/ratemypeers.png",
+        image: "project-images/ratemypeers.PNG",
         href: "https://github.com/brandonj4564/rate-my-peers",
         tags: ["Next.js", "TypeScript", "Mantine UI", "Figma", "Flask", "SQLite"],
         dates: "November - December 2024",
@@ -54,7 +54,7 @@ export const ProjectList: Project[] = [
     {
         name: "NVI Therapeutics",
         description: "A company website I designed and built for NVI Therapeutics, a biotechnology startup.",
-        image: "project-images/nvi-therapeutics.png",
+        image: "project-images/nvi-therapeutics.PNG",
         href: "/projects/nvi-therapeutics",
         tags: ["Next.js", "TypeScript", "Mantine UI", "Figma", "Sanity CMS"],
         dates: "March 2025 - Present",
@@ -74,7 +74,7 @@ export const ProjectList: Project[] = [
     {
         name: "Novel Site Multipurpose Bot",
         description: "A Discord bot built for a novel translation community which periodically scraped novel metadata from a specific site and stored it in PostgreSQL, while exposing Discord commands for browsing novels, managing translator assignments, and subscribing to update pings.",
-        image: "project-images/novelsitemultipurposebot.png",
+        image: "project-images/novelsitemultipurposebot.PNG",
         href: "https://github.com/brandonj4564/NovelSiteMultipurposeBot",
         tags: ["Discord API", "Node.js", "Javascript"],
         dates: "December 2023 - January 2024",
@@ -84,8 +84,8 @@ export const ProjectList: Project[] = [
     {
         name: "The website you're on",
         description: "What? Is there a problem? My portfolio isn't going to pad itself out, so I have to be the hero that does it.",
-        image: "project-images/personal-site.png",
-        href: "https://github.com/brandonj4564/personal-website",
+        image: "project-images/personal-site.PNG",
+        href: "https://github.com/brandonj4564/brandonj4564.github.io",
         tags: ["Next.js", "TypeScript", "Mantine UI", "Figma", "Tailwind CSS", "Framer Motion"],
         dates: "August 2025",
         opacity: 0.9,

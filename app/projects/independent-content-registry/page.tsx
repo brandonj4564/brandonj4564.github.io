@@ -19,7 +19,7 @@ export default function IndependentContentRegistryPage() {
 
     return (
         <div>
-            <ProjectPageIntro project={independentContentRegistryProject} image="/project-images/independent-content-registry/icr-home-screen.png" subtitle="Screenshot of the current home screen" />
+            <ProjectPageIntro project={independentContentRegistryProject} image="/project-images/independent-content-registry/icr-home-screen.PNG" subtitle="Screenshot of the current home screen" />
 
             <div>
                 <AnimateInView>
