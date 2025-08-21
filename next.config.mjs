@@ -14,8 +14,8 @@ const nextConfig = {
   output: 'export',                 // enables `next export`
   images: { unoptimized: true },    // required for static export when using next/image
   trailingSlash: true,              // helps with GH Pages static hosting
-  basePath: isProd ? `/${repoName}` : '',
-  assetPrefix: isProd ? `/${repoName}/` : '',
+  basePath: '',
+  assetPrefix: '',
 };
 
 export default nextConfig;
