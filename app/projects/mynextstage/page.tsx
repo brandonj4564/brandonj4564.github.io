@@ -21,7 +21,7 @@ export default function MyNextStagePage() {
 
     return (
         <div>
-            <ProjectPageIntro project={myNextStageProject} image="/project-images/mynextstage/mns-landing-page.png" subtitle="The landing page for the MyNextStage platform" />
+            <ProjectPageIntro project={myNextStageProject} image="/project-images/mynextstage/mns-landing-page.PNG" subtitle="The landing page for the MyNextStage platform" />
 
             <div>
                 <AnimateInView>

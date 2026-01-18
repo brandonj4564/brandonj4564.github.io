@@ -14,7 +14,7 @@ export const ProjectList: Project[] = [
     {
         name: "MyNextStage",
         description: "An in-development platform that generates personality profiles for job applicants, hiring managers, and teams, then uses matching algorithms to predict candidate–manager fit and model a candidate’s impact on overall team dynamics.",
-        image: "/project-images/mynextstage.png",
+        image: "/project-images/mynextstage.PNG",
         href: "/projects/mynextstage",
         tags: ["Tailwind CSS", "TypeScript", "Makerkit", "Next.js", "Supabase", "Applied Matching Algorithms", "SaaS"],
         dates: "September 2025 - Present",
