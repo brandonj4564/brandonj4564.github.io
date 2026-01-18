@@ -12,6 +12,16 @@ export interface Project {
 // The first 3 projects are shown on the homepage
 export const ProjectList: Project[] = [
     {
+        name: "MyNextStage",
+        description: "An in-development platform that generates personality profiles for job applicants, hiring managers, and teams, then uses matching algorithms to predict candidate–manager fit and model a candidate’s impact on overall team dynamics.",
+        image: "/project-images/mynextstage.png",
+        href: "/projects/mynextstage",
+        tags: ["Tailwind CSS", "TypeScript", "Makerkit", "Next.js", "Supabase", "Applied Matching Algorithms", "SaaS"],
+        dates: "September 2025 - Present",
+        opacity: 0.7,
+        caseStudy: true,
+    },
+    {
         name: "Virtual Cowboy",
         description: "A proof-of-concept mobile app built with Expo to allow farmers to replace their physical fencing with virtual drawn boundaries, simplifying the task of herding cattle.",
         image: "/project-images/virtual-cowboy.png",
@@ -27,7 +37,7 @@ export const ProjectList: Project[] = [
         image: "/project-images/credtent.png",
         href: "/projects/independent-content-registry",
         tags: ["Tailwind CSS", "TypeScript", "Makerkit", "React Remix", "Supabase", "Figma", "Shadcn UI"],
-        dates: "May 2025 - Present",
+        dates: "May 2025 - September 2025",
         opacity: 0.9,
         caseStudy: true,
     },
