@@ -38,7 +38,7 @@ export default function LossBotArenaPage() {
 
             <div style={{ margin: "5rem 0" }}>
                 <AnimateInView>
-                    <ZoomImage image="/project-images/lossbot-arena/lossbot-arena-designs.PNG" subtitle="Early designs for the platform" />
+                    <ZoomImage image="/project-images/lossbot-arena/lossbot-arena-designs.png" subtitle="Early designs for the platform" />
                 </AnimateInView>
             </div>
 
