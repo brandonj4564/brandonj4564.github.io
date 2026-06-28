@@ -12,12 +12,22 @@ export interface Project {
 // The first 3 projects are shown on the homepage
 export const ProjectList: Project[] = [
     {
+        name: "LossBot Arena",
+        description: "An AI-powered platform that lets users generate betting strategies through natural language. Describe your ideas in plain English, and the AI will generate runnable code which will be run on the backend against Polymarket and Kalshi data.",
+        image: "/project-images/lossbot-arena.PNG",
+        href: "/projects/lossbot-arena",
+        tags: ["AI", "TypeScript", "Next.js", "Supabase", "Python", "FastAPI", "AWS"],
+        dates: "February 2026 - June 2026",
+        opacity: 0.7,
+        caseStudy: true,
+    },
+    {
         name: "MyNextStage",
         description: "An in-development platform that generates personality profiles for job applicants, hiring managers, and teams, then uses matching algorithms to predict candidate–manager fit and model a candidate’s impact on overall team dynamics.",
         image: "/project-images/mynextstage.PNG",
         href: "/projects/mynextstage",
         tags: ["Tailwind CSS", "TypeScript", "Makerkit", "Next.js", "Supabase", "Applied Matching Algorithms", "SaaS"],
-        dates: "September 2025 - Present",
+        dates: "September 2025 - January 2026",
         opacity: 0.7,
         caseStudy: true,
     },

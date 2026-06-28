@@ -1,39 +1,44 @@
 'use client';
 
-import { Group, List, Space, Text, ThemeIcon } from "@mantine/core";
-import { useScreenSize } from "../../../components/ScreenSizeContext";
-import ProjectPageIntro from "../../../components/ProjectPageIntro";
-import AnimateInView from "../../../components/AnimateInView";
-import ZoomImage from "../../../components/ZoomImage";
-import { IconPencil, IconBulb, IconCode, IconSettings } from "@tabler/icons-react";
-import { motion } from "framer-motion";
 import ProjectSectionHeader from "../../../components/ProjectSectionHeader";
+import ProjectPageIntro from "../../../components/ProjectPageIntro";
+import { useScreenSize } from "../../../components/ScreenSizeContext";
+import AnimateInView from "../../../components/AnimateInView";
+import { List, Text, ThemeIcon } from "@mantine/core";
+import ZoomImage from "../../../components/ZoomImage";
 import { ProjectList } from "../_projects";
+import { IconPencil, IconBulb, IconCode, IconSettings } from "@tabler/icons-react";
 
-export default function MyNextStagePage() {
+export default function LossBotArenaPage() {
     const { isMobile } = useScreenSize();
 
-    const myNextStageProject = ProjectList.find(project => project.name === "MyNextStage");
+    const lossBotArenaProject = ProjectList.find(project => project.name === "LossBot Arena");
 
-    if (!myNextStageProject) {
+    if (!lossBotArenaProject) {
         return <div>Project not found</div>;
     }
 
     return (
         <div>
-            <ProjectPageIntro project={myNextStageProject} image="/project-images/mynextstage/mns-landing-page.PNG" subtitle="The landing page for the MyNextStage platform" />
+            <ProjectPageIntro project={lossBotArenaProject} image="/project-images/lossbot-arena/lossbot-arena-landing.PNG" subtitle="Screenshot of the current landing page" />
 
             <div>
                 <AnimateInView>
                     <ProjectSectionHeader title="Problem and Solution" />
 
                     <Text fz={isMobile ? "xs" : "sm"} c="darkColor" mb="xl">
-                        It's difficult to hire employees that match well with the team and manager they'll be working with. Even if an applicant is well qualified for the position, there's no guarantee they'll mesh with the existing team or manager. It sure would be convenient if there was a way to predict how well someone would fit in before hiring them.
+                        How many people out there use betting platforms like Polymarket or Kalshi regularly? How many of those people have an idea for a betting strategy? Out of those people, how many can actually create a bot to execute that strategy autonomously? Turning an idea into code is annoying and takes effort.
                     </Text>
 
                     <Text fz={isMobile ? "xs" : "sm"} c="darkColor" mb="md">
-                        MyNextStage is a startup that wants to tackle this issue. They provide a platform where job applicants, existing employees, and managers can take a personality assessment and receive insights about how well they would fit together. <a href="https://savvystack.com/" target="_blank">SavvyStack Inc.</a> (and I by extension) was contracted to build the application for MyNextStage.
+                        With the help of AI, LossBot Arena allows users to simply describe their strategy in plain language, and the platform will generate Python code which will be run on the backend to execute their strategy. Users can then view their strategy's performance in real-time.
                     </Text>
+                </AnimateInView>
+            </div>
+
+            <div style={{ margin: "5rem 0" }}>
+                <AnimateInView>
+                    <ZoomImage image="/project-images/lossbot-arena/lossbot-arena-designs.PNG" subtitle="Early designs for the platform" />
                 </AnimateInView>
             </div>
 
@@ -49,7 +54,7 @@ export default function MyNextStagePage() {
                                 </ThemeIcon>
                             }>
                             <Text fz={isMobile ? "xs" : "sm"} c="darkestColor">
-                                Implemented the backend of a full-stack web application using Makerkit to match job candidates with hiring managers and teams based on multi-factor fit metrics.
+                                Built and deployed a full-stack platform with a Next.js and TypeScript frontend and a Python and FastAPI simulation engine, backed by a Supabase and PostgreSQL database.
                             </Text>
                         </List.Item>
 
@@ -60,7 +65,7 @@ export default function MyNextStagePage() {
                                 </ThemeIcon>
                             }>
                             <Text fz={isMobile ? "xs" : "sm"} c="darkestColor">
-                                Designed data models and APIs to compute a quantitative fit score incorporating personality vectors to optimize retention and job satisfaction.
+                                Engineered the simulation engine on AWS to run each strategy as a Lambda function communicating over a VPC, and wrote several hundred automated tests in pytest for regression coverage.
                             </Text>
                         </List.Item>
 
@@ -71,14 +76,13 @@ export default function MyNextStagePage() {
                                 </ThemeIcon>
                             }>
                             <Text fz={isMobile ? "xs" : "sm"} c="darkestColor">
-                                Met with MyNextStage founders to discuss requirements and scope of the project, as well as technical decisions and implementation strategies.
+                                Configured CloudWatch, BetterStack, Sentry, and PostHog for monitoring, uptime, error tracking, and analytics across the deployed system.
                             </Text>
                         </List.Item>
 
                     </List>
                 </AnimateInView>
             </div>
-
         </div>
     );
-}   
+}
