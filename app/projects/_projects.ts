@@ -22,6 +22,16 @@ export const ProjectList: Project[] = [
         caseStudy: true,
     },
     {
+        name: "SORCE App",
+        description: "A mobile application that allows users to measure their heart rate variation (HRV) using their smartphone camera and provides insights into their body's performance and recovery.",
+        image: "/project-images/SORCE.webp",
+        href: "/projects/sorce",
+        tags: ["React Native", "TypeScript", "Expo", "PyTorch", "Machine Learning"],
+        dates: "February 2026 - June 2026",
+        opacity: 0.7,
+        caseStudy: true,
+    },
+    {
         name: "MyNextStage",
         description: "An in-development platform that generates personality profiles for job applicants, hiring managers, and teams, then uses matching algorithms to predict candidate–manager fit and model a candidate’s impact on overall team dynamics.",
         image: "/project-images/mynextstage.PNG",
